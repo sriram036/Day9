@@ -1,11 +1,14 @@
 package com.bridgelabz;
 import java.util.Scanner;
 public class AddressBookMain {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+
+    AddressBook addressBook = new AddressBook();
+
+    void getData(){
+
         Contact contact = new Contact();
-        AddressBook addressBook = new AddressBook();
         addressBook.contactPerson1 = contact;
+        Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter Person First Name : ");
         String firstName = scanner.next();
@@ -28,8 +31,37 @@ public class AddressBookMain {
         System.out.println("Enter person Email ID : ");
         String email = scanner.next();
         contact.setEmail(email);
+    }
 
-        System.out.println(addressBook);
+    public static void main(String[] args) {
 
+        Scanner scanner = new Scanner(System.in);
+        AddressBookMain addressBookMain = new AddressBookMain();
+
+        int choice;
+
+        addressBookMain.getData();
+
+        do {
+            System.out.println("1. Edit");
+            System.out.println("2. Display");
+            System.out.println("3. Exit");
+            System.out.println("Enter your choice : ");
+            choice = scanner.nextInt();
+            switch (choice){
+                case 1 : {
+                    addressBookMain.getData();
+                }break;
+                case 2 : {
+                    System.out.println(addressBookMain.addressBook);
+                }break;
+                case 3 : {
+                    System.exit(0);
+                }break;
+                default : {
+                    System.out.println("Wrong Choice! Please try again!");
+                }
+            }
+        } while (choice != 3);
     }
 }
