@@ -3,10 +3,11 @@ import java.util.Scanner;
 public class AddressBookMain {
 
     AddressBook addressBook = new AddressBook();
+    Contact contact = new Contact();
 
     void getData(){
 
-        Contact contact = new Contact();
+
         addressBook.contactPerson1 = contact;
         Scanner scanner = new Scanner(System.in);
 
@@ -33,6 +34,16 @@ public class AddressBookMain {
         contact.setEmail(email);
     }
 
+    void deletePerson(){
+        contact.setFirstName("");
+        contact.setLastName("");
+        contact.setCity("");
+        contact.setState("");
+        contact.setZip(0);
+        contact.setPhoneNumber(0);
+        contact.setEmail("");
+    }
+
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
@@ -45,7 +56,8 @@ public class AddressBookMain {
         do {
             System.out.println("1. Edit");
             System.out.println("2. Display");
-            System.out.println("3. Exit");
+            System.out.println("3. Delete");
+            System.out.println("4. Exit");
             System.out.println("Enter your choice : ");
             choice = scanner.nextInt();
             switch (choice){
@@ -55,13 +67,16 @@ public class AddressBookMain {
                 case 2 : {
                     System.out.println(addressBookMain.addressBook);
                 }break;
-                case 3 : {
+                case 3 :{
+                    addressBookMain.deletePerson();
+                }break;
+                case 4 : {
                     System.exit(0);
                 }break;
                 default : {
                     System.out.println("Wrong Choice! Please try again!");
                 }
             }
-        } while (choice != 3);
+        } while (choice != 4);
     }
 }
